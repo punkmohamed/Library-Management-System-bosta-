@@ -23,7 +23,12 @@ A simple yet powerful Library Management System designed to manage books, author
 - **Personal Dashboard**: Borrowers can view a list of books they currently have checked out.
 - **Overdue Tracking**: System identifies and lists books that have passed their return due date.
 
-### 4. API Security & Rate Limiting
+### 4. Analytical Reports & Exports
+- **Overdue Report**: Export a CSV of all overdue books from the last month.
+- **Borrowing Activity**: Export a CSV of all borrowing processes (checkouts/returns) from the last month.
+- **CSV Format**: Reports are formatted for easy import into Excel or other spreadsheet software.
+
+### 5. API Security & Rate Limiting
 - **Abuse Prevention**: Implemented rate limiting on sensitive endpoints (**Login**, **Register**, and **Checkout**) to protect the system from brute-force attacks and automated abuse.
 
 ### 5. Quality Assurance
@@ -83,6 +88,23 @@ A simple yet powerful Library Management System designed to manage books, author
    npm test
    ```
 
+### 🐳 Run with Docker
+If you have **Docker** and **Docker Compose** installed, you can run the entire stack (App + PostgreSQL) with a single command:
+
+1. **Build and start the containers**:
+   ```bash
+   docker-compose up --build
+   ```
+
+2. **Access the API**:
+   The application will be running at `http://localhost:3000`.
+   Swagger documentation will be at `http://localhost:3000/api-docs`.
+
+3. **Stop the containers**:
+   ```bash
+   docker-compose down
+   ```
+
 ## 📖 API Documentation
 
 The full interactive API documentation is available via Swagger. Once the server is running, visit:
@@ -111,6 +133,10 @@ The full interactive API documentation is available via Swagger. Once the server
 - `POST /api/v1/borrowing/return` - Return a borrowed book.
 - `GET /api/v1/borrowing/current/:user_id` - List current borrowings for a user.
 - `GET /api/v1/borrowing/overdue` - List all overdue books.
+
+#### Reports (CSV Export)
+- `GET /api/v1/reports/overdue` - Export last month's overdue borrows as CSV.
+- `GET /api/v1/reports/borrowings` - Export last month's borrowing activity as CSV.
 
 ## 🛡️ Security
 - **JWT Authentication**: Protected routes require a Bearer Token in the Authorization header.

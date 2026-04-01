@@ -23,6 +23,7 @@ const options: swaggerJsdoc.Options = {
       { name: 'Books', description: 'Book management endpoints' },
       { name: 'Authors', description: 'Author management endpoints' },
       { name: 'Borrowing', description: 'Book borrowing and returning endpoints' },
+      { name: 'Reports', description: 'Analytical reports and exports' },
     ],
     components: {
       securitySchemes: {
@@ -42,7 +43,7 @@ const options: swaggerJsdoc.Options = {
       ],
     }),
   },
-  apis: ['./src/routes/*.ts', './src/docs/swagger/auth.swagger.ts', './src/docs/swagger/book.swagger.ts', './src/docs/swagger/author.swagger.ts', './src/docs/swagger/borrowing.swagger.ts'],
+  apis: ['./src/routes/*.ts', './src/docs/swagger/auth.swagger.ts', './src/docs/swagger/book.swagger.ts', './src/docs/swagger/author.swagger.ts', './src/docs/swagger/borrowing.swagger.ts', './src/docs/swagger/report.swagger.ts'],
 };
 
 const swaggerSpec: any = swaggerJsdoc(options);
@@ -54,6 +55,7 @@ if (swaggerSpec.tags && Array.isArray(swaggerSpec.tags)) {
     'Books',
     'Authors',
     'Borrowing',
+    'Reports',
   ];
 
   // Sort tags according to the specified order
