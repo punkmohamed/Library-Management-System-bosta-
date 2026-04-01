@@ -23,6 +23,9 @@ A simple yet powerful Library Management System designed to manage books, author
 - **Personal Dashboard**: Borrowers can view a list of books they currently have checked out.
 - **Overdue Tracking**: System identifies and lists books that have passed their return due date.
 
+### 4. API Security & Rate Limiting
+- **Abuse Prevention**: Implemented rate limiting on sensitive endpoints (**Login**, **Register**, and **Checkout**) to protect the system from brute-force attacks and automated abuse.
+
 ## 🛠️ Technical Stack
 - **Runtime**: Node.js
 - **Framework**: Express.js
@@ -105,3 +108,7 @@ The full interactive API documentation is available via Swagger. Once the server
 - **JWT Authentication**: Protected routes require a Bearer Token in the Authorization header.
 - **Atomic Operations**: Critical operations like deletion and borrowing use **Database Transactions** to ensure data consistency.
 - **Input Validation**: All requests are validated using `express-validator` to ensure data integrity.
+- **Rate Limiting**: Prevent abuse with specific limits on sensitive endpoints:
+    - **Login**: Max 5 attempts per 15 minutes.
+    - **Register**: Max 3 registrations per hour from the same IP.
+    - **Checkout**: Max 10 checkout requests per 10 minutes.
