@@ -67,6 +67,15 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec)
 );
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Welcome to the Library Management System API",
+    documentation: "/api-docs",
+    health: "/api/v1/health"
+  });
+});
+
 app.use(`/api/v1`, apiRoutes);
 
 app.use((req: express.Request, res: express.Response) => {
