@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { BorrowingController } from '../controllers/borrowing.controller';
-import { validate } from '../middleware/validation.middleware';
+import { validate, checkoutRateLimiter } from '../middleware';
 import { authenticate } from '../middleware/auth.middleware';
 import { checkoutValidation, returnValidation, checkCurrentBorrowingsValidation, listOverdueBooksValidation } from '../validators';
 
@@ -14,7 +14,7 @@ router.use(authenticate);
  * @desc Borrower checks out a book
  * @access Private
  */
-router.post('/checkout', checkoutValidation, validate, BorrowingController.checkout);
+router.post('/checkout', checkoutRateLimiter, checkoutValidation, validate, BorrowingController.checkout);
 
 /**
  * @route POST /api/v1/borrowing/return

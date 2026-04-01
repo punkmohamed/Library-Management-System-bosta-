@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { AuthController } from '../controllers/auth.controller';
-import { validate } from '../middleware/validation.middleware';
+import { validate, loginRateLimiter, registerRateLimiter } from '../middleware';
 import { authenticate } from '../middleware/auth.middleware';
 import { registerValidation, loginValidation, refreshTokenValidation, updateUserValidation, deleteUserValidation } from '../validators';
 
@@ -11,14 +11,14 @@ const router = Router();
  * @desc Register a new user
  * @access Public
  */
-router.post('/register', registerValidation, validate, AuthController.register);
+router.post('/register', registerRateLimiter, registerValidation, validate, AuthController.register);
 
 /**
  * @route POST /api/v1/auth/login
  * @desc Login user and generate tokens
  * @access Public
  */
-router.post('/login', loginValidation, validate, AuthController.login);
+router.post('/login', loginRateLimiter, loginValidation, validate, AuthController.login);
 
 /**
  * @route POST /api/v1/auth/refresh
