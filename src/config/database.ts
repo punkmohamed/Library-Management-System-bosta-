@@ -15,7 +15,7 @@ if (!databaseUrl) {
   );
 }
 const url = new URL(databaseUrl);
-const isLocalhost = url.hostname === 'localhost' || url.hostname === '127.0.0.1';
+const isLocalhost = url.hostname === 'localhost' || url.hostname === '127.0.0.1' || url.hostname === 'db';
 const needsSSL = !isLocalhost;
 
 const sequelize = new Sequelize(databaseUrl!, {
