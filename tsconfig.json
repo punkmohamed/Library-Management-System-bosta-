@@ -34,11 +34,10 @@
       "@types/*": ["types/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/tests/**/*.ts"],
   "exclude": [
     "node_modules",
-    "dist",
-    "src/tests/**/*"
+    "dist"
   ],
   "ts-node": {
     "esm": false,
