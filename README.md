@@ -26,6 +26,9 @@ A simple yet powerful Library Management System designed to manage books, author
 ### 4. API Security & Rate Limiting
 - **Abuse Prevention**: Implemented rate limiting on sensitive endpoints (**Login**, **Register**, and **Checkout**) to protect the system from brute-force attacks and automated abuse.
 
+### 5. Quality Assurance
+- **Unit Testing**: Comprehensive unit tests for the **Author** module using Jest, ensuring core business logic reliability and preventing regressions.
+
 ## 🛠️ Technical Stack
 - **Runtime**: Node.js
 - **Framework**: Express.js
@@ -75,6 +78,11 @@ A simple yet powerful Library Management System designed to manage books, author
    npm run dev
    ```
 
+6. **Run Tests**:
+   ```bash
+   npm test
+   ```
+
 ## 📖 API Documentation
 
 The full interactive API documentation is available via Swagger. Once the server is running, visit:
@@ -108,6 +116,7 @@ The full interactive API documentation is available via Swagger. Once the server
 - **JWT Authentication**: Protected routes require a Bearer Token in the Authorization header.
 - **Atomic Operations**: Critical operations like deletion and borrowing use **Database Transactions** to ensure data consistency.
 - **Input Validation**: All requests are validated using `express-validator` to ensure data integrity.
+- **Unit Testing**: Comprehensive unit tests for the **Author** module using Jest to ensure business logic reliability.
 - **Rate Limiting**: Prevent abuse with specific limits on sensitive endpoints:
     - **Login**: Max 5 attempts per 15 minutes.
     - **Register**: Max 3 registrations per hour from the same IP.
